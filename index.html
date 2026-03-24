@@ -2,24 +2,49 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>Test Link</title>
+    <title>Open External</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 <body>
 
-    <h1>หน้าเว็บตัวอย่าง</h1>
+    <h1>ทดสอบเปิดลิงก์นอก LINE</h1>
 
-    <!-- ลิงก์ไป Google -->
-    <a href="https://www.google.com">ไป Google</a>
-
+    <button onclick="openGoogle()">เปิด Google</button>
     <br><br>
 
-    <!-- ลิงก์ไป YouTube -->
-    <a href="https://www.youtube.com">ไป YouTube</a>
-
+    <button onclick="openMap()">เปิด Google Maps</button>
     <br><br>
 
-    <!-- ลิงก์เปิดแท็บใหม่ -->
-    <a href="https://www.facebook.com" target="_blank">เปิด Facebook (แท็บใหม่)</a>
+    <button onclick="openWebsite()">เปิดเว็บไซต์ของฉัน</button>
+
+    <script>
+        async function initLIFF() {
+            await liff.init({ liffId: "YOUR_LIFF_ID" });
+        }
+
+        initLIFF();
+
+        function openGoogle() {
+            liff.openWindow({
+                url: "https://www.google.com",
+                external: true
+            });
+        }
+
+        function openMap() {
+            liff.openWindow({
+                url: "https://maps.google.com",
+                external: true
+            });
+        }
+
+        function openWebsite() {
+            liff.openWindow({
+                url: "https://yourwebsite.com",
+                external: true
+            });
+        }
+    </script>
 
 </body>
 </html>
